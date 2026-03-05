@@ -4,14 +4,14 @@ pragma solidity ^0.8.13;
 contract FunctionModifier {
     // 是否暂停
     bool public paused;
-    //
+    // 计数变量
     uint public count;
 
-    //
+    // 设置是否暂停
     function setPaused(bool _paused) external   {
         paused=_paused;
     }
-// Function modifier - 代码重⽤
+   // Function modifier - 代码重⽤
     modifier whenNotPaused(){
      require(!paused,"paused");
      _;
