@@ -1,0 +1,25 @@
+1. 课程简介
+• 介绍Solidity的可⻅性(visibility)定义。
+• 了解四种可⻅性修饰符:private、internal、public和external。
+2. Private
+• 定义:private修饰的函数和状态变量只能在定义它们的合约内访问。
+• ⽰例:合约A内的private函数只能在A合约内部调⽤。
+3. Internal
+• 定义:internal修饰的函数和状态变量可以在定义它们的合约内及其⼦合约中访问。
+• ⽰例:合约B继承⾃合约A,B合约可以访问A合约的internal函数。
+4. Public
+• 定义:public修饰的函数和状态变量可以在合约内部和外部访问。
+• ⽰例:任何合约或外部账⼾都可以访问public状态变量和函数。
+5. External
+• 定义:external修饰的函数只能从其他合约或外部账⼾调⽤。
+• ⽰例:合约C可以调⽤合约A的external函数,但A合约内部⽆法直接调⽤⾃⼰的external函数。
+6. ⽰例代码
+• 合约A:
+◦ private状态变量和函数。
+◦ internal状态变量和函数。
+◦ public状态变量和函数。
+◦ external状态变量和函数。
+• 合约B:继承⾃合约A。
+◦ 访问和调⽤internal和public状态变量及函数。
+7. 特殊情况和技巧
+• 外部调⽤⾃⾝external函数:使⽤ this.externalFunc ，虽然不推荐因为效率低下。
