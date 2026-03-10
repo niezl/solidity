@@ -6,17 +6,17 @@ pragma solidity ^0.8.13;
  - 直接发送eth
 
 
- Ether
- |
+         Ether
+          |
  is msg.data empty?
- / \
- Yes No
- / \
- receive() exists? fallback()
- / \
- Yes No
- | |
- receive() fallback()
+     /            \
+    Yes            No
+   /                 \
+ receive() exists?   fallback()
+ /            \
+ Yes           No
+ |              |
+ receive()   fallback()
 
  */
 contract Fallback {
@@ -24,7 +24,12 @@ contract Fallback {
 
 //    }
 
+    
+
     event Log(string func,address sender,uint value,bytes data);
+
+    // function deposit() external payable {
+    // }  0x1212
 
     fallback() external payable { 
     emit Log("fallback", msg.sender, msg.value, msg.data);
