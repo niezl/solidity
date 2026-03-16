@@ -5,11 +5,11 @@ import "./IERC721Receiver.sol";
 contract ERC721 is IERC721{
 //根据tokenId查询拥有者
 mapping(uint256=>address) public  _owners;
-//保存账号拥有的通证
+//存储每个地址拥有的NFT数量
 mapping (address=>uint256) public  _balances;
-// 通证对应的被授权
+// tokanId对应的被授权
 mapping ( uint256=>address) public _tokenApprovals;
-// 账号是否被授权权转发通证
+// 账号是否被授权转发token
 mapping (address=>mapping(address=>bool)) public  _operatorApprovals;
 
 // 作用
@@ -97,6 +97,7 @@ function _transfer(address from,address to,uint256 _tokenId ) internal virtual {
 function _safeTransfer(address from,address to,uint256 _tokenId,bytes memory _data) internal  virtual {
    _transfer(from,to,_tokenId);
    require(_checkOnERC721Received(from,to,_tokenId, _data),"ERC721: transfer to non ERC721Receiver implementer");
+   // require(to.code.length == 0|| IERC721Receiver(to).onERC721Received(msg.sender, from, _tokenId,"");== IERC721Receiver.onERC721Received.selector,"unsafe recipient");
 }
 
 // 检查
@@ -118,6 +119,8 @@ function _checkOnERC721Received(address from,address to,uint256 _tokenId,bytes m
 //  }else  {
 //     return  true;
 //  }
+
+
    return  true;
 }
 
